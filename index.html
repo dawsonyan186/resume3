@@ -5,9 +5,29 @@
     <title>严东的个人简历</title>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="//at.alicdn.com/t/font_455237_82v3qs1b5qj8aor.js"></script>
+    <style type="text/css">
+        .site-welcome{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #888;
+            z-index: 10;
+            justify-content: center;
+            align-items: center;
+        }
+        .site-welcome.active{
+            display: flex;
+        }
+    </style>
     </heasd>
-
     <body>
+        <div id="siteWelcome" class="site-welcome active">
+            <div class="loadding">
+            </div>    
+        </div>
         <div class="topNavBar">
             <div class="topNavBar-inner clearfix">
                 <a class="logo" href="#" alt="logo">
@@ -152,15 +172,16 @@
             </section>
         </main>
         <script>
-        portfolio1.onclick = function() {
-            portfolioBar.className = 'bar state-1'
-        }
-        portfolio2.onclick = function() {
-            portfolioBar.className = 'bar state-2'
-        }
-        portfolio3.onclick = function() {
-            portfolioBar.className = 'bar state-3'
-        }
+            portfolio1.onclick = function() {
+                portfolioBar.className = 'bar state-1'
+            }
+            portfolio2.onclick = function() {
+                portfolioBar.className = 'bar state-2'
+            }
+            portfolio3.onclick = function() {
+                portfolioBar.className = 'bar state-3'
+            }
+            siteWelcome.classList.remove('active');
         </script>
     </body>
 
