@@ -23,22 +23,39 @@ ul, ol {
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
+.site-welcome {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #888;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+}
+.site-welcome.active {
+    display: flex;
+}
+
 /*上面不要看*/
-[data-x].active{
+
+[data-x].active {
     outline: 10px solid red;
 }
-[data-x].offset{
+[data-x].offset {
     transform: translateY(100px);
 }
-[data-x]{
+[data-x] {
     transform: translateY(0);
     transition: all 0.3s;
 }
-@keyframes slideUp{
-    0%{
+@keyframes slideUp {
+    0% {
         transform: translateY(-30px);
     }
-    100%{
+    100% {
         transform: translateY(0);
     }
 }
@@ -51,12 +68,12 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     transition: all .5s;
 }
-.topNavBar.sticky{
+.topNavBar.sticky {
     background: white;
     padding: 10px 0;
     z-index: 1;
     color: #3d4451;
-    box-shadow: 0 0 10 rgba(0,0,0,0.25);
+    box-shadow: 0 0 10 rgba(0, 0, 0, 0.25);
 }
 
 .topNavBar .logo {
@@ -110,8 +127,8 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
 }
 
-.topNavBar nav > ul > li.active > a::after ,
-.topNavBar nav > ul > li.highlight > a::after {
+.topNavBar nav>ul>li.active>a::after,
+.topNavBar nav>ul>li.highlight>a::after {
     content: '';
     position: absolute;
     display: block;
@@ -123,38 +140,38 @@ h1, h2, h3, h4, h5, h6 {
     animation: menuSlide .3s;
 }
 
-@keyframes menuSlide{
-    0%{
+@keyframes menuSlide {
+    0% {
         width: 0;
     }
-    100%{
+    100% {
         width: 100%;
     }
 }
 
-.topNavBar .subMenu{
+.topNavBar .subMenu {
     display: none;
     position: absolute;
     right: 0;
     top: 100%;
     background: white;
-    color:#3d4451;
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    color: #3d4451;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.topNavBar li.active > .subMenu{
+.topNavBar li.active>.subMenu {
     display: block;
     animation: subMenuSide .3s;
 }
-@keyframes subMenuSide{
-    0%{
+@keyframes subMenuSide {
+    0% {
         margin-right: 100%;
     }
-    100%{
+    100% {
         margin-right: 0;
     }
 }
-.topNavBar .subMenu li{
+.topNavBar .subMenu li {
     white-space: nowrap;
     padding: 5px 10px;
 }
@@ -310,7 +327,7 @@ body>main {
     background: #EFEFEF;
     margin-bottom: 60px;
 }
-.skills>h2, .portfolio>h2 {
+.skills>h2, .portfolio>h2,.message>h2 {
     text-align: center;
     color: #3d4451;
     font-size: 34px;
@@ -341,7 +358,7 @@ body>main {
     height: 5px;
     background: #FAE1E1;
     border-radius: 5px;
-    margin: 5px 0px 29px;
+    margin: 5px 10px 29px 0px;
     overflow: hidden;
 }
 .skills .progressBar .progress {
@@ -352,107 +369,75 @@ body>main {
     transform: translateX(0);
     transition: all 1s;
 }
-section.skills.offset .progress{
+section.skills.offset .progress {
     transform: translateX(-100%);
 }
 .portfolio {
     background: #EFEFEF;
     text-align: center;
 }
-
-.portfolio>nav {
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 32px;
-    text-align: center;
+.portfolio h2 {
+    margin-bottom: 32px;
+}
+.portfolio .swiper-container {
+    width: 668px;
+    height: 501px;
 }
 
-.portfolio>nav>ol {
-    margin: 0 auto;
-    display: inline-block;
-    vertical-align: top;
-}
-.portfolio>nav>ol>li {
-    float: left;
-    margin-left: 40px;
-    cursor: pointer;
-}
-
-.portfolio>nav>ol>li:first-child {
-    margin-left: 0;
-}
-
-.portfolio .bar {
-    height: 5px;
-    background: white;
-    margin-top: 5px;
-    margin-bottom: 28px;
-    border-radius: 5px;
-}
-
-.portfolio>nav .bar-inner {
-    height: 100%;
-    background: #E6686A;
-    border-radius: 5px;
-    transition: all 0.3s;
-}
-.portfolio>nav .bar.state-1 .bar-inner {
-    margin-left: 0;
-    width: 50px;
-}
-.portfolio>nav .bar.state-2 .bar-inner {
-    margin-left: 65px;
-    width: 50px;
-}
-.portfolio>nav .bar.state-3 .bar-inner {
-    margin-left: 140px;
-    width: 96px;
-}
-.portfolio .jobs {
+swiper.min.css:12 .sw .loadding {
+    width: 200px;
+    height: 200px;
     position: relative;
 }
-
-.portfolio .jobs>div{
-    float: left
-} 
-
-.portfolio .jobs>.right>div {
-    margin-left: 39px;
+.loadding::before, .loadding::after {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    background: black;
+    border-radius: 50%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    animation: s 1.5s linear infinite;
+}
+.loadding::after {
+    content: '';
+    animation-delay: 0.75s;
 }
 
-.portfolio .jobs>.right>div:last-child {
-    margin-top: 22px;
+@keyframes s {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
 }
-
-.loadding{
-  width:200px;
-  height:200px;
-  position: relative;
+.message {
+    background: #EFEFEF;
+    text-align: center;
 }
-.loadding::before,.loadding::after{
-  content:'';
-  position:absolute;
-  width:0px;
-  height:0px;
-  background:black;
-  border-radius:50%;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  margin:auto;
-  animation: s 1.5s linear infinite;
+.message h2 {
+    margin-top: 32px;
+    margin-bottom: 32px;
 }
-.loadding::after{
-  content:'';
-  animation-delay:0.75s;
+section.message > ol {
+    max-width: 700px;
+    margin: 0 auto;
+    border-top: 1px solid #DDD;
 }
-
-@keyframes s{
-  0%{
-    width:0;height:0;opacity:1;
-  }
-  100%{
-    width:100%;height:100%;opacity:0;
-  }
+section.message > ol > li {
+    padding: 16px;
+    border-bottom: 1px solid #DDD;
+}
+section.message > ol > li {
+    padding: 16px;
+    border-bottom: 1px solid #DDD;
 }
